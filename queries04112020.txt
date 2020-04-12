@@ -33,6 +33,86 @@ https://developer.github.com/v4/explorer/
     }
   }
 
+#Quer4 - Explore the schema
+{
+  __schema
+  {
+    queryType{
+      name
+      description
+      fields
+      {
+        name
+        description
+        isDeprecated
+        deprecationReason
+      }
+    }
+  }
+}
+
+#Query5 - Explore the schema
+{
+  __schema
+  {
+    types{
+      name
+      description
+      fields
+      {
+        name
+        description
+        isDeprecated
+        deprecationReason
+      }
+    }
+  }
+}
+
+#Query6 - Explore the schema
+
+{
+  __type(name:"Repository")
+  {
+    kind
+    name
+    description
+  }
+}
+
+#Query6 - Explore the schema example using aliases
+
+{
+  graphqlProject: repository(name: "graphql", owner: "facebook") {
+    id
+    description
+    createdAt
+  }
+  reactProject: repository(name: "react", owner: "facebook") {
+    id
+    description
+    homepageURL
+  }
+}
+
+#Query7 - Explore the schema example using fragments
+
+{
+  graphqlProject: repository(name: "graphql", owner: "facebook") {
+		...repoFields
+  }
+  reactProject: repository(name: "react", owner: "facebook") {
+    ...repoFields
+  }
+}
+
+fragment repoFields on Repository {
+  id
+  description
+  homepageURL
+}
+
+
 
 
 
